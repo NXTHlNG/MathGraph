@@ -124,9 +124,6 @@ public class MathGraph {
         Writer writer = new StringWriter();
         csvExporter.exportGraph(graph, writer);
 
-        String[] strings = (" " + writer).replace("\n", "").replace("\r", "").split(",");
-        int a = (int) Math.sqrt(strings.length) + 1;
-
         ("0" + writer).lines().forEach(s -> {
             String[] split = s.split(",");
             System.out.format("|" + "%5s|".repeat(split.length) + "%n" + "+" + "_____+".repeat(split.length) + "%n", split);
