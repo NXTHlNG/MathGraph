@@ -17,7 +17,8 @@ import java.util.Set;
 
 @Component
 public class MathGraph {
-    private Graph<Integer, DefaultWeightedEdge> graph = new DefaultDirectedWeightedGraph<>(SupplierUtil.createIntegerSupplier(), SupplierUtil.createDefaultWeightedEdgeSupplier());
+    private Graph<Integer, DefaultWeightedEdge> graph =
+            new DefaultDirectedWeightedGraph<>(SupplierUtil.createIntegerSupplier(), SupplierUtil.createDefaultWeightedEdgeSupplier());
 
     public void importGraph(CSVFormat format, String path) {
         clearGraph();
@@ -100,8 +101,8 @@ public class MathGraph {
         return graph.edgeSet();
     }
 
-    public void visualize() {
-
+    public boolean isConnected() {
+        return new ConnectivityInspector<>(graph).isConnected();
     }
 
     public void print() {
