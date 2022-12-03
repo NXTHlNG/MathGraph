@@ -1,6 +1,7 @@
 package ru.nxthing.mathgraph.graph;
 
 import org.jgrapht.Graph;
+import org.jgrapht.alg.connectivity.ConnectivityInspector;
 import org.jgrapht.graph.DefaultDirectedWeightedGraph;
 import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.nio.csv.CSVExporter;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
 import java.io.File;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.util.List;
 import java.util.Set;
 
 
@@ -53,6 +55,14 @@ public class MathGraph {
 
     public boolean addVertex(int v) {
         return graph.addVertex(v);
+    }
+
+    public boolean addVertices(List<Integer> vertices) {
+        boolean flag = false;
+        for (int v : vertices) {
+            flag = addVertex(v);
+        }
+        return flag;
     }
 
     public boolean deleteVertex(int v) {
